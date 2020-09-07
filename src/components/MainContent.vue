@@ -1,6 +1,7 @@
 <template>
   <div>
-    <v-card v-for="(value,index) in cards" :key="index"
+    <h1>{{ returnValue }}</h1>
+    <v-card v-for="(value,index) in returnValue" :key="index"
       class="mx-auto"
       max-width="300"
     >
@@ -9,7 +10,7 @@
           height="200px"
           src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
         >
-          <v-card-title>{{ returnValue(value.titles) }}</v-card-title>
+          <v-card-title>{{ index }}</v-card-title>
         </v-img>
 
         <v-card-subtitle class="pb-0"></v-card-subtitle>
@@ -51,9 +52,10 @@
                 ]
             }
         },
-        methods: {
-            returnValue(necessaryArr) {
-                necessaryArr.forEach((card) => {
+        computed: {
+          // eslint-disable-next-line vue/return-in-computed-property
+            returnValue() {
+                this.cards.forEach((card) => {
                     console.log(card)
                     return card
                 })
