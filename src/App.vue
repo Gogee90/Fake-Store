@@ -9,7 +9,7 @@
         </v-col>
         <v-col
           cols="8">
-          <HelloWorld/>
+          <MainContent />
         </v-col>
       </v-row>
     </v-container>
@@ -18,19 +18,19 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Sidenav from "@/components/Sidenav";
+import MainContent from "@/components/MainContent";
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
     Navbar,
     Footer,
-    Sidenav
+    Sidenav,
+    MainContent
   },
 
   data() {
