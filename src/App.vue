@@ -9,7 +9,10 @@
         </v-col>
         <v-col
           cols="8">
-          <MainContent />
+          <TopCarousel :cities="cities"/>
+          <h1>Каталог товаров</h1>
+          <MainContent :cities="cities"/>
+          <NewsFeed />
         </v-col>
       </v-row>
     </v-container>
@@ -22,6 +25,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Sidenav from "@/components/Sidenav";
 import MainContent from "@/components/MainContent";
+import TopCarousel from "@/components/Carousel";
+import NewsFeed from "@/components/NewsFeed";
+import db from "@/firebase/init";
 
 export default {
   name: 'App',
@@ -30,13 +36,25 @@ export default {
     Navbar,
     Footer,
     Sidenav,
-    MainContent
+    MainContent,
+    TopCarousel,
+    NewsFeed
   },
 
   data() {
       return {
-
+          cities: []
       }
-  }
+  },
+  created() {
+      db.collection("online-shop").get()
+          .then(snapshot => {
+              snapshot.forEach(doc => {
+                  let cards = doc.data()
+                  cards.id = doc.id
+                  this.cities.push(cards)
+            })
+        })
+      }
 };
 </script>

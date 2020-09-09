@@ -83,5 +83,8 @@
 </script>
 
 <style scoped>
-
+.mx-auto {
+  margin: 40px 0;
+  position: fixed;
+}
 </style>

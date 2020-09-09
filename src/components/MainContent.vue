@@ -1,22 +1,21 @@
 <template>
-  <div>
-    <h1>{{ returnValue }}</h1>
-    <v-card v-for="(value,index) in returnValue" :key="index"
+  <v-row>
+    <v-card v-for="city in cities" :key="city.id"
       class="mx-auto"
       max-width="300"
     >
         <v-img
           class="white--text align-end"
           height="200px"
-          src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+          v-bind:src="city.link.path"
         >
-          <v-card-title>{{ index }}</v-card-title>
+          <v-card-title>{{ city.title }}</v-card-title>
         </v-img>
 
-        <v-card-subtitle class="pb-0"></v-card-subtitle>
+        <v-card-subtitle class="pb-0">{{ city.subtitle }}</v-card-subtitle>
 
         <v-card-text class="text--primary">
-          <div></div>
+          <div>{{ city.location }}</div>
 
           <div>Whitsunday Island, Whitsunday Islands</div>
         </v-card-text>
@@ -37,33 +36,23 @@
           </v-btn>
         </v-card-actions>
     </v-card>
-  </div>
+  </v-row>
 </template>
 
 <script>
     export default {
         name: "MainContent",
+        props: ['cities'],
         data() {
             return {
-                cards: [
-                  {titles: ['Some beaches', 'Some more beaches', 'Top 10 Australian beaches']},
-                  {subtitles: ['Number 9', 'Number 8', 'Number 10']},
-                  {locations: ['Whitehaven Beach', 'Omaha beach', 'Bitch beach']}
-                ]
+
             }
         },
-        computed: {
-          // eslint-disable-next-line vue/return-in-computed-property
-            returnValue() {
-                this.cards.forEach((card) => {
-                    console.log(card)
-                    return card
-                })
-            }
-        }
     }
 </script>
 
 <style scoped>
-
+.mx-auto {
+  margin: 10px 0;
+}
 </style>
