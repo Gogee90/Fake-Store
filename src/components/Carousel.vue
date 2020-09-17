@@ -5,19 +5,19 @@
       autoplay=True
       perPage=3
       loop=True>
-      <slide v-for="slide in cities" :key="slide.id">
+      <slide v-for="slide in categories" :key="slide.id">
         <v-card
           class="mx-auto"
           max-width="300">
           <v-img
             class="white--text align-end"
             height="200px"
-            v-bind:src="slide.link.path"
+            v-bind:src="slide.image"
           >
             <v-card-title>{{ slide.title }}</v-card-title>
           </v-img>
 
-        <v-card-subtitle class="pb-0">{{ slide.subtitle }}</v-card-subtitle>
+        <v-card-subtitle class="pb-0">Цена: {{ slide.price }} руб.</v-card-subtitle>
       </v-card>
     </slide>
   </carousel>
@@ -33,7 +33,7 @@
           Slide
         },
         name: "TopCarousel",
-        props: ['cities'],
+        props: ['categories'],
         data() {
             return {
 

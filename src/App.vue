@@ -9,9 +9,11 @@
         </v-col>
         <v-col
           cols="8">
-          <TopCarousel :cities="cities"/>
+          <TopCarousel :categories="categories"/>
+          <v-divider></v-divider>
           <h1>Каталог товаров</h1>
-          <MainContent :cities="cities"/>
+          <MainContent :categories="categories"/>
+          <v-divider></v-divider>
           <NewsFeed />
         </v-col>
       </v-row>
@@ -27,7 +29,6 @@ import Sidenav from "@/components/Sidenav";
 import MainContent from "@/components/MainContent";
 import TopCarousel from "@/components/Carousel";
 import NewsFeed from "@/components/NewsFeed";
-import db from "@/firebase/init";
 
 export default {
   name: 'App',
@@ -43,18 +44,20 @@ export default {
 
   data() {
       return {
-          cities: []
+          categories: []
       }
   },
   created() {
-      db.collection("online-shop").get()
-          .then(snapshot => {
-              snapshot.forEach(doc => {
-                  let cards = doc.data()
-                  cards.id = doc.id
-                  this.cities.push(cards)
-            })
-        })
-      }
+      const axios = require('axios');
+      axios.get('https://fakestoreapi.com/products?limit=10/')
+          .then(response => {
+              let products = response.data
+              products.forEach(items => {
+                  this.categories.push(items)
+              })
+          }).catch(err => {
+              console.log(err)
+      })
+    }
 };
 </script>
