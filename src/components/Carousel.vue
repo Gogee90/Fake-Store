@@ -17,10 +17,10 @@
             <v-card-title>{{ slide.title }}</v-card-title>
           </v-img>
 
-        <v-card-subtitle class="pb-0">Цена: {{ slide.price }} руб.</v-card-subtitle>
-      </v-card>
-    </slide>
-  </carousel>
+          <v-card-subtitle class="pb-0">Цена: {{ slide.price }} руб.</v-card-subtitle>
+        </v-card>
+      </slide>
+    </carousel>
   </div>
 </template>
 
