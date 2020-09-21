@@ -4,6 +4,7 @@
       <v-card v-for="product in categories" v-bind:key="product.id"
         class="mx-auto"
         max-width="300"
+        :to="{ name: 'Product', params: { category: product.category, product_id: product.id }}"
       >
         <v-img
           class="white--text align-end"
@@ -12,7 +13,6 @@
         >
           <v-card-title>{{ product.title }}</v-card-title>
         </v-img>
-        <v-card-text class="pb-0">{{ product.description }}</v-card-text>
 
         <v-divider></v-divider>
 
@@ -57,7 +57,8 @@
                         this.categories.push(items)
                     })
                     this.categories = this.categories.filter(result => {
-                        return result.category == "men clothing"
+                        console.log(this.$route.params.category)
+                        return result.category == this.$route.params.category
                     })
                     console.log(this.categories)
                 }).catch(err => {
@@ -70,7 +71,7 @@
 
 <style scoped>
 .men-clothing-catalogue {
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .mx-auto {

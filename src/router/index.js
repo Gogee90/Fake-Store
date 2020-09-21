@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import MenClothing from "@/components/MenClothing";
 import MainContent from "@/components/MainContent";
+import Product from "@/components/Product";
 
 Vue.use(VueRouter)
 
@@ -12,9 +13,14 @@ Vue.use(VueRouter)
     component: MainContent
   },
   {
-    path: '/men-clothing',
+    path: '/:category/',
     name: 'MenClothing',
     component: MenClothing
+  },
+  {
+    path: '/:category/:product_id',
+    name: 'Product',
+    component: Product
   },
   {
     path: '/about',
