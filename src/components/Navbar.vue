@@ -1,21 +1,19 @@
 <template>
   <div>
     <v-app-bar
-      color="blue-grey lighten-5"
+      color="blue-grey"
       dense
       dark
       fixed=True
       class="navbar">
-      <v-toolbar-title>Железяка</v-toolbar-title>
+      <v-toolbar-title>Fake Store API</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
       <ul class="navbar-links">
-        <li>О нас</li>
-        <li>Услуги и сервис</li>
-        <li>Условия приёма</li>
-        <li>Оценка товара</li>
-        <li>Контакты</li>
+        <li>About us</li>
+        <li>Store</li>
+        <li>Contacts</li>
       </ul>
 
       <v-btn icon>
@@ -32,7 +30,7 @@
             return {
 
             }
-        }
+        },
     }
 </script>
 
@@ -44,6 +42,5 @@
   .navbar-links li {
     display: inline-block;
     padding: 0 10px;
-    color: black ;
   }
 </style>

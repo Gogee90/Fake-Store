@@ -4,7 +4,7 @@
     width="300"
   >
     <v-list>
-      <v-list-item>
+      <v-list-item :to="{name: 'MainContent'}">
         <v-list-item-title>Home</v-list-item-title>
       </v-list-item>
 
@@ -14,7 +14,7 @@
         value="true"
       >
         <template v-slot:activator>
-          <v-list-item-title>Users</v-list-item-title>
+          <v-list-item-title>Products</v-list-item-title>
         </template>
 
         <v-list-group
@@ -24,62 +24,53 @@
         >
           <template v-slot:activator>
             <v-list-item-content>
-              <v-list-item-title>Admin</v-list-item-title>
+              <v-list-item-title>Clothing</v-list-item-title>
             </v-list-item-content>
           </template>
 
           <v-list-item
-            v-for="(admin, i) in admins"
-            :key="i"
-            link
-          >
-            <v-list-item-title v-text="admin[0]"></v-list-item-title>
+            :to="{name: 'MenClothing', params: {category: 'men clothing'}}">
+            <v-list-item-title>Men clothing</v-list-item-title>
+          </v-list-item>
+          <v-list-item
+            :to="{name: 'MenClothing', params: {category: 'women clothing'}}">
+            <v-list-item-title>Women clothing</v-list-item-title>
           </v-list-item>
         </v-list-group>
 
         <v-divider></v-divider>
 
-        <v-list-group
-          sub-group
-          no-action
-        >
-          <template v-slot:activator>
-            <v-list-item-content>
-              <v-list-item-title>Actions</v-list-item-title>
-            </v-list-item-content>
-          </template>
-          <v-list-item
-            v-for="(crud, i) in cruds"
-            :key="i"
-            @click="doSomething"
-          >
-            <v-list-item-title v-text="crud[0]"></v-list-item-title>
+          <v-list-item :to="{path: 'electronics'}">
+            <v-list-item-title>Electronics</v-list-item-title>
+          </v-list-item>
 
+          <v-divider></v-divider>
+
+          <v-list-item>
+            <v-list-item-title>Jewelry</v-list-item-title>
           </v-list-item>
         </v-list-group>
-      </v-list-group>
     </v-list>
   </v-card>
 </template>
 
 <script>
+
     export default {
         name: "Sidenav",
         data() {
             return {
-                admins: [
-                  ['Management', 'people_outline'],
-                  ['Settings', 'settings'],
-                ],
-                cruds: [
-                  ['Create', 'add'],
-                  ['Read', 'insert_drive_file'],
-                  ['Update', 'update'],
-                  ['Delete', 'delete'],
-                ],
+                clothing: ['Men clothing', 'Women clothing'],
+                electronics: ['Electronics'],
+                jewelry: ['Jewelry'],
             }
         },
-    }
+        watch: {
+          $route() {
+              this.$router.push(this.$route.path)
+          }
+        }
+      }
 </script>
 
 <style scoped>

@@ -16,7 +16,7 @@
 
         <v-divider></v-divider>
 
-        <div class="price">Цена: {{ product.price }} руб.</div>
+        <div class="price">Price: {{ product.price }} $.</div>
 
         <v-card-actions
           class="buttons"

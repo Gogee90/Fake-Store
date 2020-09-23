@@ -1,6 +1,6 @@
 <template>
   <v-footer padless
-    color="blue-grey lighten-5"
+    color="blue-grey"
   >
     <v-col
         class="text-center"
@@ -23,7 +23,4 @@
 </script>
 
 <style scoped>
-.text-center {
-  color: black;
-}
 </style>

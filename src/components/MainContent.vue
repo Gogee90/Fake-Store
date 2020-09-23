@@ -1,6 +1,7 @@
 <template>
   <div>
     <Carousel :categories="categories"/>
+    <h1>Categories</h1>
     <v-row>
       <v-card
           class="mx-auto"
@@ -12,9 +13,9 @@
           height="200px"
           src="https://i.pinimg.com/736x/9c/9c/8f/9c9c8fd739b13eed999f8d178db9abfe.jpg"
         >
-          <v-card-title>Мужская одежда</v-card-title>
+          <v-card-title>Men clothing</v-card-title>
         </v-img>
-        <v-card-subtitle class="pb-0">Коллекция мужской одежды</v-card-subtitle>
+        <v-card-subtitle class="pb-0">Men clothing collection</v-card-subtitle>
 
         <v-card-actions>
           <v-btn
@@ -42,9 +43,9 @@
             height="200px"
             src="https://image01.bonprix.ru/api/s,x,460,y,460/teaser/homepage/2036-dob-kw-36/kleider-940488-1766614.jpg?h=YOe8OSA7bwGVfKhYyKK+S4lYTYzyAfLJhKAZreqmHtk="
           >
-          <v-card-title>Женская одежда</v-card-title>
+          <v-card-title>Women clothing</v-card-title>
           </v-img>
-          <v-card-subtitle class="pb-0">Коллекция женской одежды</v-card-subtitle>
+          <v-card-subtitle class="pb-0">Women clothing collection</v-card-subtitle>
 
           <v-card-actions>
             <v-btn
@@ -72,9 +73,9 @@
             height="200px"
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRSCVFJyM5P5KQPs-em597jcZVSL96-pU0TsQ&usqp=CAU"
           >
-            <v-card-title>Товары для компьютера</v-card-title>
+            <v-card-title>Electronics</v-card-title>
           </v-img>
-          <v-card-subtitle class="pb-0">Разная электроника</v-card-subtitle>
+          <v-card-subtitle class="pb-0">Electronics</v-card-subtitle>
 
           <v-card-actions>
             <v-btn
@@ -100,7 +101,10 @@
 <script>
   import Carousel from "@/components/Carousel";
   import NewsFeed from "@/components/NewsFeed";
+  import { requestData } from "@/components/mixins/axios_mixin";
+
     export default {
+        mixins: [requestData],
         components: {
           Carousel,
           NewsFeed,
@@ -111,18 +115,6 @@
                 categories: [],
             }
         },
-        created() {
-            const axios = require('axios');
-            axios.get('https://fakestoreapi.com/products?limit=10/')
-                .then(response => {
-                    let products = response.data
-                    products.forEach(items => {
-                        this.categories.push(items)
-                    })
-                }).catch(err => {
-                    console.log(err)
-            })
-        }
     }
 </script>
 
