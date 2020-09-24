@@ -28,25 +28,21 @@
             </v-list-item-content>
           </template>
 
-          <v-list-item
-            :to="{name: 'MenClothing', params: {category: 'men clothing'}}">
-            <v-list-item-title>Men clothing</v-list-item-title>
-          </v-list-item>
-          <v-list-item
-            :to="{name: 'MenClothing', params: {category: 'women clothing'}}">
-            <v-list-item-title>Women clothing</v-list-item-title>
+          <v-list-item v-for="(cloth, index) in clothing" :key="index"
+            :to="{name: 'MenClothing', params: {category: cloth.toLowerCase()}}">
+            <v-list-item-title>{{ cloth }}</v-list-item-title>
           </v-list-item>
         </v-list-group>
 
         <v-divider></v-divider>
 
-          <v-list-item :to="{path: 'electronics'}">
+          <v-list-item :to="{name: 'MenClothing', params: {category: 'electronics'}}">
             <v-list-item-title>Electronics</v-list-item-title>
           </v-list-item>
 
           <v-divider></v-divider>
 
-          <v-list-item>
+          <v-list-item :to="{name: 'MenClothing', params: {category: 'jewelery'}}">
             <v-list-item-title>Jewelry</v-list-item-title>
           </v-list-item>
         </v-list-group>
@@ -65,11 +61,6 @@
                 jewelry: ['Jewelry'],
             }
         },
-        watch: {
-          $route() {
-              this.$router.push(this.$route.path)
-          }
-        }
       }
 </script>
 

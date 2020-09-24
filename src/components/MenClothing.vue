@@ -48,7 +48,8 @@
                 categories: []
             }
         },
-        created() {
+        methods: {
+          getContent(category) {
             const axios = require('axios');
             axios.get('https://fakestoreapi.com/products?limit=10/')
                 .then(response => {
@@ -58,14 +59,21 @@
                     })
                     this.categories = this.categories.filter(result => {
                         console.log(this.$route.params.category)
-                        return result.category == this.$route.params.category
+                        return result.category == category
                     })
                     console.log(this.categories)
                 }).catch(err => {
                     console.log(err)
             })
+          }
+        },
+        created() {
+            this.getContent(this.$route.params.category)
+        },
+        beforeRouteUpdate(to, from, next) {
+            this.getContent(to.params.category)
+            next()
         }
-
     }
 </script>
 
