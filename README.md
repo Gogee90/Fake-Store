@@ -1,5 +1,7 @@
 # untitled1
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4f418715-cafb-4663-bcbb-ead452267d15/deploy-status)](https://app.netlify.com/sites/distracted-easley-826ab7/deploys)
+
 ## Project setup
 ```
 npm install
