@@ -35,7 +35,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-The appp is built upon FAKE STORE API. You can check the repo here https://github.com/keikaavousi/fake-store-api.
+The appp is built upon FAKE STORE API. You can check the repo here <strong>https://github.com/keikaavousi/fake-store-api</strong>.
 Big thanks to him!
 !!!<strong>WARNING</strong>!!! As it's still work in progress!
 
@@ -105,7 +105,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Igor Nikolaev - [linkedin-url](https://www.linkedin.com/in/igor-nikolaev-orenburg/) - gogee09@gmail.com
 
-Project Link: [https://github.com/Gogee90/Fake-Store-API/blob/master/README.md](https://github.com/Gogee90/Personal-website/blob/master/README.md)
+Project Link: [https://github.com/Gogee90/Fake-Store-API/blob/master/README.md](https://github.com/Gogee90/Fake-Store-API/blob/master/README.md)
 
 
 
