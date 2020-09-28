@@ -56,28 +56,42 @@ At the moment you can add new products, but due to the limitations of the API
 To get a local copy up and running follow these simple example steps.
 
 
-### Installation
+## Usage
 
-1. Install Python https://www.python.org/
-2. Clone the repo
-git clone https://github.com/Gogee90/-
-3. Create virtual environment
-python -m venv your_env(linux: python3 -m venv your_env)
-4. Activate virtual environment
-Windows: your_env\Scripts\activate, Linux: source your_env/bin/activate
-5. Install packages
-pip install requirements.txt
-
+To have this app on your pc, you need to:
+* Vue.js and Node.js installed on your computer
+* [download](https://github.com/Gogee90/Fake-Store-API) or clone this repo:
+  - Clone with SSH:
+  ```
+    git@github.com:Gogee90/Geo-loaction-based-chat.git
+  ```
+  - Clone with HTTPS
+  ```
+    https://github.com/Gogee90/Geo-loaction-based-chat.git
+  ```
+- run "npm install" to install all dependencies
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+<!-- INSTALLATION -->
+## Build Setup
 
-1. CD to your project's directory
-2. python manage.py makemigrations
-3. python manage.py migrate
-4. python manage.py createsuperuser your_username
-4. python manage.py runserver
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
+```
+
+For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
 
 
 <!-- LICENSE -->
@@ -91,20 +105,15 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Igor Nikolaev - [linkedin-url](https://www.linkedin.com/in/igor-nikolaev-orenburg/) - gogee09@gmail.com
 
-Project Link: [https://github.com/Gogee90/Personal-website/blob/master/README.md](https://github.com/Gogee90/Personal-website/blob/master/README.md)
+Project Link: [https://github.com/Gogee90/Fake-Store-API/blob/master/README.md](https://github.com/Gogee90/Personal-website/blob/master/README.md)
 
 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* [Python](https://www.python.org/)
-* [Django](https://www.djangoproject.com/)
-* [Python social auth](https://github.com/python-social-auth/social-core)
-* [CKEditor](https://ckeditor.com/)
-* [MIT](https://opensource.org/licenses/MIT)
-* [Nginx](https://nginx.org/)
-* [Gunicorn](https://gunicorn.org/)
-
+* [Vue.js](https://vuejs.org/)
+* [Vuetify](https://vuetifyjs.com/en/)
+* [Vue router](https://router.vuejs.org/)
 
 
 
@@ -112,7 +121,7 @@ Project Link: [https://github.com/Gogee90/Personal-website/blob/master/README.md
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
-[issues-url]: https://github.com/Gogee90/Personal-website/issues
+[issues-url]: https://github.com/Gogee90/Fake-Store-API/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/igor-nikolaev-orenburg/
-[product-screenshot]: https://skr.sh/i/140920/59Hv5Sp0.jpg?download=1
+[product-screenshot]: https://skr.sh/i/280920/xIs13n58.jpg?download=1
