@@ -36,20 +36,18 @@
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 The appp is built upon FAKE STORE API. You can check the repo here https://github.com/keikaavousi/fake-store-api.
-!!!<strong>WARNING</strong>!!!
+Big thanks to him!
+!!!<strong>WARNING</strong>!!! As it's still work in progress!
 
 ### Demo
-It's not actually a demo but a fully functional website built by me.
-[Demo](https://refill56.ru/)
+At the moment you can add new products, but due to the limitations of the API
+"<strong>Note: Posted data will not really insert into the database and just return a fake id.</strong>"
+[Demo](https://distracted-easley-826ab7.netlify.app/)
 
 ### Built With
-* [Python](https://www.python.org/)
-* [Django](https://www.djangoproject.com/)
-* [Python social auth](https://github.com/python-social-auth/social-core)
-* [CKEditor](https://ckeditor.com/)
-* [Jquery modal](https://github.com/kylefox/jquery-modal)
-* [Jquery](https://jquery.com/)
-
+* [Vue.js](https://vuejs.org/)
+* [Vuetify](https://vuetifyjs.com/en/)
+* [Vue router](https://router.vuejs.org/)
 
 
 <!-- GETTING STARTED -->
