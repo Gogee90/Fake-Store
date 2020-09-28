@@ -63,11 +63,11 @@ To have this app on your pc, you need to:
 * [download](https://github.com/Gogee90/Fake-Store-API) or clone this repo:
   - Clone with SSH:
   ```
-    git@github.com:Gogee90/Geo-loaction-based-chat.git
+    git@github.com:Gogee90/Fake-Store.git
   ```
   - Clone with HTTPS
   ```
-    https://github.com/Gogee90/Geo-loaction-based-chat.git
+    https://github.com/Gogee90/Fake-Store.git
   ```
 - run "npm install" to install all dependencies
 
