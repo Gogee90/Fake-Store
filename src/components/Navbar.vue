@@ -6,7 +6,7 @@
       dark
       fixed=True
       class="navbar">
-      <v-toolbar-title>Fake Store API</v-toolbar-title>
+      <v-toolbar-title>Fake Store</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
