@@ -19,5 +19,7 @@
 </script>
 
 <style scoped>
-
+.news-feed {
+  margin: 20px 0;
+}
 </style>

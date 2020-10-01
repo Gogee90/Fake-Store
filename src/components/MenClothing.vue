@@ -7,20 +7,6 @@
         :to="{ name: 'Product', params: { category: product.category, product_id: product.id }}"
       >
 
-          <v-icon
-            class="ma-2"
-            dark
-          >
-            mdi-wrench
-          </v-icon>
-
-          <v-icon
-            class="ma-2"
-            dark
-            right
-          >
-            mdi-cancel
-          </v-icon>
         <v-img
           class="white--text align-end"
           height="200px"
