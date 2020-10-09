@@ -6,7 +6,7 @@ export const requestData = {
     },
     mounted() {
         const axios = require('axios');
-        axios.get('https://fakestoreapi.com/products?limit=10/')
+        axios.get('http://gogee90.pythonanywhere.com/api/products')
             .then(response => {
                 let products = response.data
                 products.forEach(items => {
