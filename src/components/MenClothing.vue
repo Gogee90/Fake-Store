@@ -52,7 +52,7 @@
         methods: {
           getContent(category) {
             const axios = require('axios');
-            axios.get('http://gogee90.pythonanywhere.com/api/products')
+            axios.get('https://gogee90.pythonanywhere.com/api/products')
                 .then(response => {
                     let products = response.data
                     products.forEach(items => {

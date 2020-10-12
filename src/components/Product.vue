@@ -100,7 +100,7 @@
             }
         },
         mounted() {
-            axios.get(`http://gogee90.pythonanywhere.com/api/products/${this.product_id}`)
+            axios.get(`https://gogee90.pythonanywhere.com/api/products/${this.product_id}`)
               .then(response => {
                   this.properties.push(response.data)
                   this.properties.forEach(value => {
@@ -121,7 +121,7 @@
             updateProduct() {
                 axios({
                   method: 'put',
-                  url:`http://gogee90.pythonanywhere.com/api/products/${this.product_id}`,
+                  url:`https://gogee90.pythonanywhere.com/api/products/${this.product_id}`,
                   data: {
                     category: this.category,
                     description: this.description,

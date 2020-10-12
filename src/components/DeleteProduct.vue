@@ -33,7 +33,7 @@
                 const axios = require('axios')
                 axios({
                   method: 'delete',
-                  url: `http://gogee90.pythonanywhere.com/api/products/${this.product_id}`
+                  url: `https://gogee90.pythonanywhere.com/api/products/${this.product_id}`
                 })
                   .then(response => {
                       this.properties = response.data
