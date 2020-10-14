@@ -83,7 +83,7 @@
 </template>
 
 <script>
-    const axios = require('axios');
+    import axios from "@/main";
     export default {
         name: "Product",
         data() {

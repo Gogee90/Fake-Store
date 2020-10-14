@@ -42,6 +42,7 @@
 </template>
 
 <script>
+  import axios from "@/main";
     export default {
         name: "MenClothing",
         data() {
@@ -51,7 +52,6 @@
         },
         methods: {
           getContent(category) {
-            const axios = require('axios');
             axios.get('https://gogee90.pythonanywhere.com/api/products')
                 .then(response => {
                     let products = response.data

@@ -85,7 +85,7 @@
 
 
 <script>
-  const axios = require('axios');
+  import axios from "@/main";
   import { Carousel, Slide } from 'vue-carousel';
     export default {
         components: {

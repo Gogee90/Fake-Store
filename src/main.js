@@ -10,3 +10,7 @@ new Vue({
   vuetify,
   render: h => h(App)
 }).$mount('#app')
+
+
+const axios = require('axios')
+export default axios

@@ -4,6 +4,7 @@ import MenClothing from "@/components/MenClothing";
 import MainContent from "@/components/MainContent";
 import Product from "@/components/Product";
 import DeleteProduct from "@/components/DeleteProduct";
+import LoginPage from "@/components/Login";
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ Vue.use(VueRouter)
     path: '/:category/:product_id/delete/',
     name: 'DeleteProduct',
     component: DeleteProduct
+  },
+  {
+    path: '/login/',
+    name: 'LoginPage',
+    component: LoginPage
   },
   {
     path: '/about',
