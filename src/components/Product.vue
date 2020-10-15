@@ -83,7 +83,7 @@
 </template>
 
 <script>
-    import axios from "@/main";
+    import axios from "axios";
     export default {
         name: "Product",
         data() {
@@ -100,7 +100,7 @@
             }
         },
         mounted() {
-            axios.get(`https://gogee90.pythonanywhere.com/api/products/${this.product_id}`)
+            axios.get(`/products/${this.product_id}`)
               .then(response => {
                   this.properties.push(response.data)
                   this.properties.forEach(value => {
@@ -119,17 +119,13 @@
                 this.$router.push({name: 'DeleteProduct', params: {category: this.$route.params.category, product_id: this.product_id}})
             },
             updateProduct() {
-                axios({
-                  method: 'put',
-                  url:`https://gogee90.pythonanywhere.com/api/products/${this.product_id}`,
-                  data: {
-                    category: this.category,
-                    description: this.description,
-                    id: this.product_id,
-                    image: this.image,
-                    price: this.price,
-                    title: this.title,
-                  }
+                axios.put(`/products/${this.product_id}`,{
+                  category: this.category,
+                  description: this.description,
+                  id: this.product_id,
+                  image: this.image,
+                  price: this.price,
+                  title: this.title,
                 }).then(response => {
                     this.dialog = false
                     this.properties = []

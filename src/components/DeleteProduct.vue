@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import axios from "@/main";
+  import axios from "axios";
     export default {
         name: "EditProduct",
         data() {
@@ -31,13 +31,9 @@
         },
         methods: {
             deleteProduct() {
-                const token = localStorage.getItem('token')
                 axios({
                   method: 'delete',
-                  url: `https://gogee90.pythonanywhere.com/api/products/${this.product_id}`,
-                  headers: {
-                    'Authorization': `Token ${token}`
-                  }
+                  url: `/products/${this.product_id}`,
                 })
                   .then(response => {
                       this.properties = response.data

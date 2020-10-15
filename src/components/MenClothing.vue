@@ -42,7 +42,7 @@
 </template>
 
 <script>
-  import axios from "@/main";
+  import axios from "axios";
     export default {
         name: "MenClothing",
         data() {
@@ -52,7 +52,7 @@
         },
         methods: {
           getContent(category) {
-            axios.get('https://gogee90.pythonanywhere.com/api/products')
+            axios.get('/products')
                 .then(response => {
                     let products = response.data
                     products.forEach(items => {

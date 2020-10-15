@@ -59,12 +59,12 @@
                 <v-text-field label="Image link" required v-model="image_link"></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-autocomplete
-                  :items="['men clothing', 'women clothing', 'electronics', 'jewelry']"
-                  label="Categories"
-                  multiple
-                  v-model="category"
-                ></v-autocomplete>
+                <form>
+                  <select v-model="selected">
+                    <option v-for="option in categoryList" :value="option.id" :key="option.id">{{option.category}}</option>
+                 </select>
+                  <span>Выбрано: {{ selected }}</span>
+                </form>
               </v-col>
             </v-row>
           </v-container>
@@ -85,7 +85,7 @@
 
 
 <script>
-  import axios from "@/main";
+  import axios from 'axios'
   import { Carousel, Slide } from 'vue-carousel';
     export default {
         components: {
@@ -102,24 +102,36 @@
                 description: null,
                 image_link: null,
                 category: null,
-                feedback: null
+                feedback: null,
+                categoryList: null,
+                selected: null
             }
         },
         methods: {
             addProduct() {
-                axios.post('https://fakestoreapi.com/products?sort=desc?limit=5', {
+                axios.post('/products/', {
+                    author: 'gogen',
                     title: this.title,
                     price: this.price,
                     description: this.description,
                     image: this.image_link,
-                    category: this.category[0]
+                    category: this.selected
                 }).then(response => {
                     this.categories.push(response.data)
                     this.dialog = false
                 }).catch(err => {
                     this.feedback = err
                 })
+            },
+            getCategory() {
+                axios.get('/category/')
+                  .then(response => {
+                      this.categoryList = response.data
+                  })
             }
+        },
+        created() {
+            this.getCategory()
         }
     }
 </script>

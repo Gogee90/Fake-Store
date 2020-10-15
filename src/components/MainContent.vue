@@ -110,11 +110,6 @@
           NewsFeed,
         },
         name: "MainContent",
-        data() {
-            return {
-                categories: [],
-            }
-        },
     }
 </script>
 

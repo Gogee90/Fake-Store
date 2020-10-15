@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  import axios from "@/main";
+  import axios from "axios";
     export default {
         name: "LoginPage",
         data() {
@@ -38,7 +38,7 @@
         },
         methods: {
             submit() {
-                axios.post('https://gogee90.pythonanywhere.com/api/dj-rest-auth/login/', {
+                axios.post('/dj-rest-auth/login/', {
                     username: this.login,
                     password: this.password
                 }).then(value => {
