@@ -34,6 +34,9 @@
                 axios({
                   method: 'delete',
                   url: `/products/${this.product_id}`,
+                  headers: {
+                    'Authorization': `Token ${localStorage['token']}`
+                  },
                 })
                   .then(response => {
                       this.properties = response.data

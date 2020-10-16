@@ -22,7 +22,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Sidenav from "@/components/Sidenav";
 
-
 export default {
   name: 'App',
 

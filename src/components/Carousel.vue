@@ -110,12 +110,15 @@
         methods: {
             addProduct() {
                 axios.post('/products/', {
-                    author: 'gogen',
                     title: this.title,
                     price: this.price,
                     description: this.description,
                     image: this.image_link,
                     category: this.selected
+                }, {
+                  headers: {
+                    'Authorization': `Token ${localStorage['token']}`
+                  },
                 }).then(response => {
                     this.categories.push(response.data)
                     this.dialog = false

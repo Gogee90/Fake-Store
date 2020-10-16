@@ -126,6 +126,11 @@
                   image: this.image,
                   price: this.price,
                   title: this.title,
+                },{
+                  headers: {
+                    'Authorization': `Token ${localStorage['token']}`,
+                    'Content-Type': 'multipart/form-data'
+                  },
                 }).then(response => {
                     this.dialog = false
                     this.properties = []
