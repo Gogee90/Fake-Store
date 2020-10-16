@@ -6,7 +6,7 @@ import axios from 'axios';
 
 
 axios.defaults.baseURL = 'https://gogee90.pythonanywhere.com/api'
-axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`;
+//axios.defaults.headers.common['Authorization'] = `Token ${localStorage.getItem('token')}`;
 
 
 Vue.config.productionTip = false
