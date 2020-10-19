@@ -1,8 +1,10 @@
 <template>
   <div class="mx-auto">
-    <ul v-for="property in properties" :key="property.id">
       <v-dialog v-model="dialog" persistent max-width="600px">
         <template v-slot:activator="{ on, attrs }">
+          <div class="buttons">
+
+          </div>
           <v-icon
             class="ma-2"
             dark
@@ -10,6 +12,14 @@
             v-on="on"
           >
             mdi-wrench
+          </v-icon>
+          <v-icon
+            class="ma-2"
+            dark
+            right
+            @click="deleteProduct"
+          >
+            mdi-cancel
           </v-icon>
         </template>
         <v-card>
@@ -29,7 +39,12 @@
                 <v-text-field label="Description" required v-model="description"></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field label="Image link" required v-model="image"></v-text-field>
+                <input
+                  id="file"
+                  ref="file"
+                  type="file"
+                  v-on:change="handleFileUpload()"
+                />
               </v-col>
               <v-col cols="12" sm="6">
                 <v-autocomplete
@@ -51,14 +66,7 @@
       </v-card>
       </v-dialog>
 
-      <v-icon
-        class="ma-2"
-        dark
-        right
-        @click="deleteProduct"
-      >
-        mdi-cancel
-      </v-icon>
+    <ul v-for="property in properties" :key="property.id">
       <li><h1>{{property.title}}</h1></li>
       <li><v-img :src="property.image"
         class="white--text align-center"
@@ -93,7 +101,7 @@
                 properties: [],
                 category: null,
                 description: null,
-                image: null,
+                image: '',
                 price: null,
                 title: null,
                 dialog: false
@@ -119,17 +127,16 @@
                 this.$router.push({name: 'DeleteProduct', params: {category: this.$route.params.category, product_id: this.product_id}})
             },
             updateProduct() {
-                axios.put(`/products/${this.product_id}`,{
-                  category: this.category,
-                  description: this.description,
-                  id: this.product_id,
-                  image: this.image,
-                  price: this.price,
-                  title: this.title,
-                },{
+                let formData = new FormData()
+                formData.append('category', this.category)
+                formData.append('description', this.category)
+                formData.append('id', this.product_id)
+                formData.append('image', this.image)
+                formData.append('price', this.price)
+                formData.append('title', this.title)
+                axios.put(`/products/${this.product_id}`,formData, {
                   headers: {
                     'Authorization': `Token ${localStorage['token']}`,
-                    'Content-Type': 'multipart/form-data'
                   },
                 }).then(response => {
                     this.dialog = false
@@ -138,6 +145,10 @@
                 }).catch(err => {
                     console.log(err)
                 })
+            },
+            handleFileUpload() {
+                this.image = this.$refs.file.files[0]
+                console.log(this.image)
             }
         }
     }
@@ -159,7 +170,7 @@ ul {
   text-align: -webkit-center;
 }
 .ma-2 {
-  left: 13em;
+  left: 18em;
   color: darkgray;
 }
 .ma-2:hover {

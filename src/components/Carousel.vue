@@ -55,15 +55,15 @@
               <v-col cols="12">
                 <v-text-field label="Description" required v-model="description"></v-text-field>
               </v-col>
-              <v-col cols="12">
-                <v-text-field label="Image link" required v-model="image_link"></v-text-field>
-              </v-col>
               <v-col cols="12" sm="6">
                 <form>
                   <select v-model="selected">
                     <option v-for="option in categoryList" :value="option.id" :key="option.id">{{option.category}}</option>
-                 </select>
+                  </select>
                   <span>Выбрано: {{ selected }}</span>
+                  <label>File
+                    <input type="file" id="file" ref="file" v-on:change="handleFileUpload()" />
+                  </label>
                 </form>
               </v-col>
             </v-row>
@@ -100,7 +100,7 @@
                 title: null,
                 price: null,
                 description: null,
-                image_link: null,
+                image_link: '',
                 category: null,
                 feedback: null,
                 categoryList: null,
@@ -109,15 +109,16 @@
         },
         methods: {
             addProduct() {
-                axios.post('/products/', {
-                    title: this.title,
-                    price: this.price,
-                    description: this.description,
-                    image: this.image_link,
-                    category: this.selected
-                }, {
+                let formData = new FormData()
+                formData.append('category', this.category)
+                formData.append('description', this.category)
+                formData.append('id', this.product_id)
+                formData.append('image', this.image_link)
+                formData.append('price', this.price)
+                formData.append('title', this.title)
+                axios.post('/products/', formData, {
                   headers: {
-                    'Authorization': `Token ${localStorage['token']}`
+                    'Authorization': `Token ${localStorage['token']}`,
                   },
                 }).then(response => {
                     this.categories.push(response.data)
@@ -125,6 +126,10 @@
                 }).catch(err => {
                     this.feedback = err
                 })
+            },
+            handleFileUpload() {
+                this.image_link = this.$refs.file.files[0];
+                console.log('>>>> 1st element in files array >>>> ', this.image_link);
             },
             getCategory() {
                 axios.get('/category/')
