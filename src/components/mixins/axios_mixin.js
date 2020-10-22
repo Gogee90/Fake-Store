@@ -1,19 +1,27 @@
+import axios from "axios";
+
 export const requestData = {
     data() {
         return {
             categories: [],
+            categoryList: []
+        }
+    },
+    methods: {
+        getCategory() {
+            axios.get('/category/')
+              .then(response => {
+                  this.categoryList = response.data
+              })
         }
     },
     mounted() {
-        const axios = require('axios');
-        axios.get('https://gogee90.pythonanywhere.com/api/products')
+        axios.get('/products/')
             .then(response => {
-                let products = response.data
-                products.forEach(items => {
-                    this.categories.push(items)
-                })
+                this.categories = response.data
             }).catch(err => {
                 console.log(err)
         })
+        this.getCategory()
     },
 }

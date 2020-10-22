@@ -10,50 +10,21 @@
 
       <v-divider></v-divider>
 
-      <v-list-group
-        value="true"
-      >
-        <template v-slot:activator>
-          <v-list-item-title>Products</v-list-item-title>
-        </template>
-
-        <v-list-group
-          no-action
-          sub-group
-          value="true"
-        >
-          <template v-slot:activator>
-            <v-list-item-content>
-              <v-list-item-title>Clothing</v-list-item-title>
-            </v-list-item-content>
-          </template>
-
-          <v-list-item v-for="(cloth, index) in clothing" :key="index"
-            :to="{name: 'MenClothing', params: {category: cloth.toLowerCase()}}">
-            <v-list-item-title>{{ cloth }}</v-list-item-title>
-          </v-list-item>
-        </v-list-group>
-
+      <v-list-item
+        v-for="card in categoryList" :key="card.id"
+        :to="{name: 'MenClothing', params: {category: card.id }}">
+        <v-list-item-title>{{card.category}}</v-list-item-title>
         <v-divider></v-divider>
-
-          <v-list-item :to="{name: 'MenClothing', params: {category: 'electronics'}}">
-            <v-list-item-title>Electronics</v-list-item-title>
-          </v-list-item>
-
-          <v-divider></v-divider>
-
-          <v-list-item :to="{name: 'MenClothing', params: {category: 'jewelery'}}">
-            <v-list-item-title>Jewelry</v-list-item-title>
-          </v-list-item>
-        </v-list-group>
+      </v-list-item>
     </v-list>
   </v-card>
 </template>
 
 <script>
-
+  import { requestData } from "@/components/mixins/axios_mixin";
     export default {
         name: "Sidenav",
+        mixins: [requestData],
         data() {
             return {
                 clothing: ['Men clothing', 'Women clothing'],

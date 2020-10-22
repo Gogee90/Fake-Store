@@ -129,7 +129,7 @@
             updateProduct() {
                 let formData = new FormData()
                 formData.append('category', this.category)
-                formData.append('description', this.category)
+                formData.append('description', this.description)
                 formData.append('id', this.product_id)
                 formData.append('image', this.image)
                 formData.append('price', this.price)
