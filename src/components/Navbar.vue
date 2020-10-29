@@ -11,7 +11,7 @@
       <v-spacer></v-spacer>
 
       <ul class="navbar-links">
-        <router-link :to="{name: 'LoginPage'}"><li>Login</li></router-link>
+        <li><router-link :to="{name: 'LoginPage'}">Login</router-link></li>
         <li>Store</li>
         <li>Contacts</li>
       </ul>
@@ -28,9 +28,14 @@
         name: "Navbar",
         data() {
             return {
-
+                status: null
             }
         },
+        computed: {
+            getStatus() {
+               return this.$store.getters.getStatus
+            }
+        }
     }
 </script>
 

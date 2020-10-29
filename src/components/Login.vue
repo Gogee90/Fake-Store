@@ -1,28 +1,28 @@
 <template>
   <div class="login-form">
-    <v-form
+    <v-col cols="7">
+        <v-card
+        align="center"
+        justify="center"
       >
-      <v-text-field
-        v-model="login"
-        label="Login"
-        required
-      ></v-text-field>
-      <v-text-field
-        v-model="password"
-        label="Password"
-        required
-      ></v-text-field>
-
-      <v-btn
-        class="mr-4"
-        @click="submit"
-      >
-        submit
-      </v-btn>
-      <v-btn @click="clear">
-        clear
-      </v-btn>
-    </v-form>
+      <v-card-title center>Login</v-card-title>
+      <form>
+        <ul>
+          <li>
+            <v-text-field type="text" label="Login" v-model="login"></v-text-field>
+          </li>
+          <li>
+            <v-text-field v-model="password" type="password" label="Password"></v-text-field>
+          </li>
+          <li>
+            <v-btn @click.prevent="submit">Submit</v-btn>
+            <v-btn type="reset">Cancel</v-btn>
+          </li>
+          <li v-if="feedback">{{feedback}}</li>
+        </ul>
+      </form>
+    </v-card>
+    </v-col>
   </div>
 </template>
 
@@ -33,7 +33,8 @@
         data() {
             return {
                 login: null,
-                password: null
+                password: null,
+                feedback: null
             }
         },
         methods: {
@@ -42,9 +43,19 @@
                     username: this.login,
                     password: this.password
                 }).then(value => {
-                    localStorage.setItem('token', value.data['key'])
+                    if (value.status == 200) {
+                        localStorage.setItem('token', value.data['key'])
+                        localStorage.setItem('is_logged', true)
+                        this.$store.dispatch('saveStatus', localStorage['is_logged'])
+                        console.log(this.$store.getters.getStatus)
+                        this.$router.push('/')
+                    } else {
+                        this.feedback = 'Username or password are incorrect!'
+                        alert(this.feedback)
+                    }
                 }).catch(err => {
                     console.log(err)
+                    this.feedback = err
                 })
             }
         }
@@ -54,5 +65,10 @@
 <style scoped>
 .login-form {
   margin-top: 30px;
+}
+
+.login-form ul {
+  list-style: none;
+  padding: 20px;
 }
 </style>
