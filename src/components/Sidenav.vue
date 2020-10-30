@@ -11,7 +11,7 @@
       <v-divider></v-divider>
 
       <v-list-item
-        v-for="card in categoryList" :key="card.id"
+        v-for="card in this.$store.getters.getCategoryList" :key="card.id"
         :to="{name: 'MenClothing', params: {category: card.id }}">
         <v-list-item-title>{{card.category}}</v-list-item-title>
         <v-divider></v-divider>
@@ -21,17 +21,17 @@
 </template>
 
 <script>
-  import { requestData } from "@/components/mixins/axios_mixin";
     export default {
         name: "Sidenav",
-        mixins: [requestData],
         data() {
             return {
-                clothing: ['Men clothing', 'Women clothing'],
-                electronics: ['Electronics'],
-                jewelry: ['Jewelry'],
+
             }
         },
+        beforeRouteUpdate(to, from, next) {
+            this.$store.dispatch('saveCategories')
+            next()
+        }
       }
 </script>
 

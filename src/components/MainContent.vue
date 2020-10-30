@@ -1,10 +1,10 @@
 <template>
   <div>
-    <Carousel :categories="categories"/>
+    <Carousel />
     <h1>Categories</h1>
     <v-row>
       <v-card
-          v-for="card in categoryList" :key="card.id"
+          v-for="card in this.$store.getters.getCategoryList" :key="card.id"
           class="mx-auto"
           max-width="300"
           :to="{ name: 'MenClothing', params: {category: card.id } }"
@@ -42,10 +42,8 @@
 <script>
   import Carousel from "@/components/Carousel";
   import NewsFeed from "@/components/NewsFeed";
-  import { requestData } from "@/components/mixins/axios_mixin";
 
     export default {
-        mixins: [requestData],
         components: {
           Carousel,
           NewsFeed,

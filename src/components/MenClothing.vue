@@ -42,29 +42,17 @@
 </template>
 
 <script>
-  import axios from "axios";
     export default {
         name: "MenClothing",
         data() {
             return {
-                categories: []
+                categories: this.$store.getters.getProducts
             }
         },
         methods: {
           getContent(category) {
-            axios.get('/products')
-                .then(response => {
-                    let products = response.data
-                    products.forEach(items => {
-                        this.categories.push(items)
-                    })
-                    this.categories = this.categories.filter(result => {
-                        console.log(this.$route.params.category)
-                        return result.category == category
-                    })
-                    console.log(this.categories)
-                }).catch(err => {
-                    console.log(err)
+            this.categories = this.categories.filter(result => {
+                return result.category == category
             })
           }
         },

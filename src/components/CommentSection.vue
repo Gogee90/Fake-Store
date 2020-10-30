@@ -1,5 +1,11 @@
 <template>
-
+  <v-textarea
+    outlined
+    name="input-7-4"
+    label="Leave a feedback"
+    value="feedback"
+  >
+  </v-textarea>
 </template>
 
 <script>

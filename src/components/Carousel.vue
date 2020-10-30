@@ -5,7 +5,7 @@
       autoplay=True
       perPage=3
       loop=True>
-      <slide v-for="slide in categories" :key="slide.id">
+      <slide v-for="slide in this.$store.getters.getProducts" :key="slide.id">
         <v-card
           class="mx-auto"
           max-width="300"
@@ -58,7 +58,7 @@
               <v-col cols="12" sm="6">
                 <form>
                   <select v-model="selected">
-                    <option v-for="option in categoryList" :value="option.id" :key="option.id">{{option.category}}</option>
+                    <option v-for="option in this.$store.getters.getCategoryList" :value="option.id" :key="option.id">{{option.category}}</option>
                   </select>
                   <span>Выбрано: {{ selected }}</span>
                   <label>File
@@ -93,7 +93,6 @@
           Slide
         },
         name: "TopCarousel",
-        props: ['categories'],
         data() {
             return {
                 dialog: false,
@@ -103,7 +102,6 @@
                 image_link: '',
                 category: null,
                 feedback: null,
-                categoryList: null,
                 selected: null
             }
         },
@@ -131,16 +129,7 @@
                 this.image_link = this.$refs.file.files[0];
                 console.log('>>>> 1st element in files array >>>> ', this.image_link);
             },
-            getCategory() {
-                axios.get('/category/')
-                  .then(response => {
-                      this.categoryList = response.data
-                  })
-            }
         },
-        created() {
-            this.getCategory()
-        }
     }
 </script>
 

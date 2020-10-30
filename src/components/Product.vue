@@ -75,28 +75,21 @@
       ></v-img></li>
       <li class="price">Price {{property.price}} $.</li>
       <li>{{property.description}}</li>
-    <p>{{ text }}</p>
     </ul>
     <div class="feedback">
-      <v-textarea
-        v-model="text"
-        outlined
-        name="input-7-4"
-        label="Leave a feedback"
-        value="feedback"
-      >
-      </v-textarea>
+      <CommentSection />
     </div>
   </div>
 </template>
 
 <script>
     import axios from "axios";
+    import CommentSection from "@/components/CommentSection";
     export default {
-        name: "Product",
-        data() {
+      name: "Product",
+      components: {CommentSection},
+      data() {
             return {
-                text: null,
                 product_id: this.$route.params.product_id,
                 properties: [],
                 category: null,
