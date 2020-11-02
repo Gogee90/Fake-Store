@@ -28,10 +28,6 @@
 
             }
         },
-        beforeRouteUpdate(to, from, next) {
-            this.$store.dispatch('saveCategories')
-            next()
-        }
       }
 </script>
 

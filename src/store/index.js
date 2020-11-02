@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
       is_logged: false,
       categories: [],
-      categoryList: []
+      categoryList: [],
+      product: null
   },
   mutations: {
       setStatus(state, data) {
@@ -19,6 +20,9 @@ export default new Vuex.Store({
       },
       setCategoryList(state, payload) {
           state.categoryList = payload
+      },
+      setProduct(state, payload) {
+          state.product = payload
       }
   },
   actions: {
@@ -26,19 +30,26 @@ export default new Vuex.Store({
           context.commit('setStatus', data)
       },
       saveCategories(context) {
-              function getProducts() {
-                return axios.get('/products/')
-              }
-              function getCategories() {
-                  return axios.get('/category/')
-              }
-              Promise.all([getProducts(), getCategories()])
-                .then(response => {
-                    context.commit('setProducts', response[0].data)
-                    context.commit('setCategoryList', response[1].data)
-                })
+          function getProducts() {
+            return axios.get('/products/')
           }
-      },
+          function getCategories() {
+              return axios.get('/category/')
+          }
+          Promise.all([getProducts(), getCategories()])
+            .then(response => {
+                context.commit('setProducts', response[0].data)
+                context.commit('setCategoryList', response[1].data)
+            })
+          },
+      saveProduct(context, id) {
+          axios.get(`/products/${id}`)
+            .then(response => {
+                context.commit('setProduct', response.data)
+                console.log(this.state.product)
+            })
+      }
+  },
   getters: {
       getStatus(state) {
           return state.is_logged
@@ -48,6 +59,9 @@ export default new Vuex.Store({
       },
       getCategoryList(state) {
           return state.categoryList
+      },
+      getProduct(state) {
+          return state.product
       }
   }
 })

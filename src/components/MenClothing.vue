@@ -46,12 +46,12 @@
         name: "MenClothing",
         data() {
             return {
-                categories: this.$store.getters.getProducts
+                categories: null
             }
         },
         methods: {
           getContent(category) {
-            this.categories = this.categories.filter(result => {
+            this.categories = this.$store.getters.getProducts.filter(result => {
                 return result.category == category
             })
           }

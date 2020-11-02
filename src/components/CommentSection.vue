@@ -21,8 +21,14 @@
         },
         methods: {
             getComments() {
-                axios.get('')
+                axios.get(`/comments/${this.$route.params.product_id}`)
+                  .then(response => {
+                      console.log(response.data)
+                  })
             }
+        },
+        created() {
+            this.getComments()
         }
     }
 </script>
