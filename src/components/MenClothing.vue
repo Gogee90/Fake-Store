@@ -57,9 +57,11 @@
           }
         },
         created() {
+            this.$store.dispatch('saveCategories')
             this.getContent(this.$route.params.category)
         },
         beforeRouteUpdate(to, from, next) {
+            this.$store.dispatch('saveCategories')
             this.getContent(to.params.category)
             next()
         }

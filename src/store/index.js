@@ -16,13 +16,13 @@ export default new Vuex.Store({
           state.is_logged = data
       },
       setProducts(state, payload) {
-          state.categories = payload
+          Vue.set(state.categories = payload)
       },
       setCategoryList(state, payload) {
           state.categoryList = payload
       },
       setProduct(state, payload) {
-          state.product = payload
+          Vue.set(state.product = payload)
       }
   },
   actions: {

@@ -1,11 +1,22 @@
 <template>
-  <v-textarea
-    outlined
-    name="input-7-4"
-    label="Leave a feedback"
-    value="feedback"
-  >
-  </v-textarea>
+  <div class="feedback">
+    <h2>Feedback</h2>
+    <v-divider></v-divider>
+    <ul v-for="comment in comments" :key="comment.id">
+      <li><small>{{comment.created_date}}</small></li>
+      <li><strong>{{comment.author}}</strong></li>
+      <li>{{comment.text}}</li>
+      <v-divider></v-divider>
+    </ul>
+    <v-spacer></v-spacer>
+    <v-textarea
+      outlined
+      name="input-7-4"
+      label="Leave a feedback"
+      value="feedback"
+    >
+    </v-textarea>
+  </div>
 </template>
 
 <script>
@@ -14,16 +25,15 @@
         name: "CommentSection",
         data() {
             return {
-                comment: null,
-                author: null,
-                date: null
+                comments: null,
             }
         },
         methods: {
             getComments() {
                 axios.get(`/comments/${this.$route.params.product_id}`)
                   .then(response => {
-                      console.log(response.data)
+                      this.comments = response.data
+                      console.log(this.comments)
                   })
             }
         },
@@ -34,5 +44,11 @@
 </script>
 
 <style scoped>
+.feedback ul {
+  list-style: none;
+}
 
+.feedback h2 {
+  text-align: center;
+}
 </style>
