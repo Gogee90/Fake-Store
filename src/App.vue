@@ -4,11 +4,13 @@
     <v-container fluid>
       <v-row>
         <v-col
-          cols="3">
+          xs="5"
+          lg="3">
           <Sidenav />
         </v-col>
         <v-col
-          cols="8">
+          xs="12"
+          lg="8">
           <router-view></router-view>
         </v-col>
       </v-row>

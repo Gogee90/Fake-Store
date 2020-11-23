@@ -36,4 +36,10 @@
   margin: 40px 0;
   position: fixed;
 }
+
+@media screen and (max-width: 1260px){
+  .mx-auto {
+    display: none;
+  }
+}
 </style>

@@ -3,7 +3,6 @@
     <v-row>
       <v-card v-for="product in categories" v-bind:key="product.id"
         class="mx-auto"
-        max-width="300"
         :to="{ name: 'Product', params: { category: product.category, product_id: product.id }}"
       >
 
@@ -61,7 +60,6 @@
             this.getContent(this.$route.params.category)
         },
         beforeRouteUpdate(to, from, next) {
-            this.$store.dispatch('saveCategories')
             this.getContent(to.params.category)
             next()
         }
@@ -75,6 +73,7 @@
 
 .mx-auto {
   margin: 10px 0;
+  max-width: 300px;
 }
 
 .price {
@@ -89,5 +88,11 @@
 .ma-2 {
   left: 9em;
   color: darkgray;
+}
+
+@media screen and (max-width: 1260px){
+  .mx-auto {
+    max-width: 60%;
+  }
 }
 </style>

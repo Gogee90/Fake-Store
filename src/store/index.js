@@ -22,7 +22,7 @@ export default new Vuex.Store({
           state.categoryList = payload
       },
       setProduct(state, payload) {
-          Vue.set(state.product = payload)
+          Vue.set(state.product, payload)
       }
   },
   actions: {
