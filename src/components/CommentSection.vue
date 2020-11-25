@@ -14,6 +14,8 @@
       name="input-7-4"
       label="Leave a feedback"
       value="feedback"
+      v-model="newComment"
+      @keypress.enter="sendComments"
     >
     </v-textarea>
   </div>
@@ -26,9 +28,28 @@
         data() {
             return {
                 comments: null,
+                newComment: ''
             }
         },
         methods: {
+            sendComments() {
+              axios({
+                method: 'post',
+                url: `/comments/${this.$route.params.product_id}`,
+                headers: {
+                    'Authorization': `Token ${localStorage['token']}`,
+                  },
+                data: {
+                  text: this.newComment,
+                  product: this.$route.params.product_id
+                }
+              })
+              .then(response => {
+                this.comments.push(response.data)
+              }).catch(err => {
+                console.log(err)
+              })
+            },
             getComments() {
                 axios.get(`/comments/${this.$route.params.product_id}`)
                   .then(response => {
