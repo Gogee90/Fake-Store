@@ -9,14 +9,16 @@
         <v-card
           class="mx-auto"
           max-width="300"
-          :to="{name: 'Product', params: {category: slide.category, product_id: slide.id}}">
-          <v-img
-            class="white--text align-end"
-            height="200px"
-            v-bind:src="slide.image"
           >
-            <v-card-title>{{ slide.title }}</v-card-title>
-          </v-img>
+          <router-link :to="{name: 'Product', params: {category: slide.category, product_id: slide.id}}">
+            <v-img
+              class="white--text align-end"
+              height="200px"
+              v-bind:src="slide.image"
+            >
+            </v-img>
+          </router-link>
+          <v-card-title>{{ slide.title }}</v-card-title>
 
           <v-card-subtitle class="pb-0 font-weight-medium"
             text
@@ -24,6 +26,14 @@
           >
             Price: {{ slide.price }} $.
           </v-card-subtitle>
+          <v-card-actions>
+            <v-btn
+              color="orange"
+              text
+            >
+              Add to cart
+            </v-btn>
+          </v-card-actions>
         </v-card>
       </slide>
     </carousel>

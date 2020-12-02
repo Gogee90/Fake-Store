@@ -1,29 +1,34 @@
 <template>
-  <v-card
-    class="mx-auto"
-    width="300"
-  >
-    <v-list>
-      <v-list-item :to="{name: 'MainContent'}">
-        <v-list-item-title>Home</v-list-item-title>
-      </v-list-item>
+  <div>
+    <v-card
+      class="mx-auto"
+      width="300"
+    >
+      <v-list>
+        <v-list-item :to="{name: 'MainContent'}">
+          <v-list-item-title>Home</v-list-item-title>
+        </v-list-item>
 
-      <v-divider></v-divider>
-
-      <v-list-item
-        v-for="card in this.$store.getters.getCategoryList" :key="card.id"
-        :to="{name: 'MenClothing', params: {category: card.id }}">
-        <v-list-item-title>{{card.category}}</v-list-item-title>
         <v-divider></v-divider>
-      </v-list-item>
-    </v-list>
-  </v-card>
+
+        <v-list-item
+          v-for="card in this.$store.getters.getCategoryList" :key="card.id"
+          :to="{name: 'MenClothing', params: {category: card.id }}">
+          <v-list-item-title>{{card.category}}</v-list-item-title>
+          <v-divider></v-divider>
+        </v-list-item>
+      </v-list>
+      <Cart />
+    </v-card>
+  </div>
 </template>
 
 <script>
+  import Cart from "@/components/Cart";
     export default {
         name: "Sidenav",
-        data() {
+      components: {Cart},
+      data() {
             return {
 
             }

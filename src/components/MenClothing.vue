@@ -25,14 +25,7 @@
             color="orange"
             text
           >
-            Share
-          </v-btn>
-
-          <v-btn
-            color="orange"
-            text
-          >
-            Explore
+            Add to cart
           </v-btn>
         </v-card-actions>
       </v-card>
