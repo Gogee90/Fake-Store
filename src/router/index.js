@@ -5,6 +5,7 @@ import MainContent from "@/components/MainContent";
 import Product from "@/components/Product";
 import DeleteProduct from "@/components/DeleteProduct";
 import LoginPage from "@/components/Login";
+import CartComponent from "@/components/CartComponent";
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,12 @@ Vue.use(VueRouter)
     path: '/login/',
     name: 'LoginPage',
     component: LoginPage
+  },
+  {
+    path: '/orders/',
+    name: 'Orders',
+    component: CartComponent,
+    props: true
   },
   {
     path: '/about',

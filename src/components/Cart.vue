@@ -1,34 +1,49 @@
 <template>
     <v-card>
       <v-card-title>Cart</v-card-title>
-      <v-icon class="cart_icon">shopping_cart</v-icon>
+      <router-link :to="{ name: 'Orders' }"><v-icon class="cart_icon">shopping_cart</v-icon></router-link>
       <v-card-text>You have {{cart.length}} items in cart</v-card-text>
+      <v-card-subtitle><strong>You are currently logged in as: {{credentials.username}}</strong></v-card-subtitle>
     </v-card>
 </template>
 
 <script>
   import axios from 'axios'
     export default {
-        name: "Cart",
-        data() {
+      name: "Cart",
+      data() {
             return {
-                cart: null
+                credentials: null,
+                cart: null,
             }
         },
         methods: {
             getCart() {
-                axios.get('https://gogee90.pythonanywhere.com/api/carts/1')
+                axios.get(`https://gogee90.pythonanywhere.com/api/carts/${this.credentials.pk}`)
                   .then(response => {
                       response.data.forEach(item => {
                         this.cart = item.product_id
-                        console.log(this.cart)
+                        localStorage['credentials'] = this.credentials.pk
                       })
                   })
-            }
+            },
+            getCredentials() {
+              axios({
+                method: 'get',
+                headers: {
+                  'Authorization': `Token ${localStorage['token']}`
+                },
+                url: '/dj-rest-auth/user/'
+              })
+                .then(response => {
+                  this.credentials = response.data
+                  this.getCart()
+                })
+            },
         },
         mounted() {
-            this.getCart()
-        }
+            this.getCredentials()
+        },
     }
 </script>
 

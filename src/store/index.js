@@ -9,7 +9,8 @@ export default new Vuex.Store({
       is_logged: false,
       categories: [],
       categoryList: [],
-      product: null
+      product: null,
+      credentials: null
   },
   mutations: {
       setStatus(state, data) {
@@ -23,6 +24,9 @@ export default new Vuex.Store({
       },
       setProduct(state, payload) {
           Vue.set(state.product, payload)
+      },
+      setCredentials(state, payload) {
+        state.credentials = payload
       }
   },
   actions: {
@@ -48,7 +52,7 @@ export default new Vuex.Store({
                 context.commit('setProduct', response.data)
                 console.log(this.state.product)
             })
-      }
+      },
   },
   getters: {
       getStatus(state) {
@@ -62,6 +66,9 @@ export default new Vuex.Store({
       },
       getProduct(state) {
           return state.product
+      },
+      getCredentials(state) {
+        return state.credentials
       }
   }
 })
