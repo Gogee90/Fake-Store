@@ -1,9 +1,10 @@
 <template>
-  <v-row>
-    <div class="orders" v-for="value in carts" :key="value.id">
+  <div class="orders">
+    <h1>Your orders</h1>
+    <v-row v-for="value in carts" :key="value.id">
       <v-card v-for="item in value.product_id" :key="item.id"
           class="mx-auto"
-          max-width="300"
+          max-width="250"
         >
         <v-img
           :src="item.image"
@@ -17,8 +18,11 @@
           text>Remove from cart</v-btn>
         </v-card-actions>
       </v-card>
-    </div>
-  </v-row>
+      <v-spacer></v-spacer>
+    </v-row>
+    <v-divider></v-divider>
+    <v-spacer></v-spacer>
+  </div>
 </template>
 
 <script>
@@ -48,5 +52,8 @@
 </script>
 
 <style scoped>
-
+.orders {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
 </style>
