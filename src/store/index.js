@@ -10,7 +10,9 @@ export default new Vuex.Store({
       categories: [],
       categoryList: [],
       product: null,
-      credentials: null
+      credentials: null,
+      carts: [],
+      cartFromDb: null
   },
   mutations: {
       setStatus(state, data) {
@@ -27,6 +29,12 @@ export default new Vuex.Store({
       },
       setCredentials(state, payload) {
         state.credentials = payload
+      },
+      setCart(state, payload) {
+          state.carts = payload
+      },
+      setCartToDb(state, payload) {
+          state.cartFromDb = payload
       }
   },
   actions: {
@@ -53,6 +61,15 @@ export default new Vuex.Store({
                 console.log(this.state.product)
             })
       },
+      saveCart(context, product) {
+          context.commit('setCart', product)
+      },
+      returnCart(context, id) {
+          axios.get(`/carts/${id}`)
+            .then(response => {
+                context.commit('setCartToDb', response.data)
+            })
+      }
   },
   getters: {
       getStatus(state) {
@@ -69,6 +86,12 @@ export default new Vuex.Store({
       },
       getCredentials(state) {
         return state.credentials
+      },
+      getCart(state) {
+        return state.carts
+      },
+      getCartFromDb(state) {
+          return state.cartFromDb
       }
   }
 })

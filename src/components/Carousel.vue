@@ -30,6 +30,7 @@
             <v-btn
               color="orange"
               text
+              @click="addToCart(slide.id)"
             >
               Add to cart
             </v-btn>
@@ -55,9 +56,16 @@
         name: "TopCarousel",
         data() {
             return {
-
+                products: []
             }
         },
+        methods: {
+          addToCart(id) {
+              this.products.push(id)
+              console.log(this.products)
+              this.$store.dispatch('saveCart', this.products)
+          }
+        }
     }
 </script>
 
