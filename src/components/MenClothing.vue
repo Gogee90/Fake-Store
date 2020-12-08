@@ -3,16 +3,18 @@
     <v-row>
       <v-card v-for="product in categories" v-bind:key="product.id"
         class="mx-auto"
-        :to="{ name: 'Product', params: { category: product.category, product_id: product.id }}"
-      >
 
-        <v-img
-          class="white--text align-end"
-          height="200px"
-          :src="product.image"
-        >
-          <v-card-title>{{ product.title }}</v-card-title>
-        </v-img>
+      >
+        <router-link :to="{ name: 'Product', params: { category: product.category, product_id: product.id }}">
+          <v-img
+            class="white--text align-end"
+            height="200px"
+            :src="product.image"
+          >
+          </v-img>
+        </router-link>
+
+        <v-card-title>{{ product.title }}</v-card-title>
 
         <v-divider></v-divider>
 
@@ -24,6 +26,7 @@
           <v-btn
             color="orange"
             text
+            @click="addToCart(product.id)"
           >
             Add to cart
           </v-btn>
@@ -34,8 +37,10 @@
 </template>
 
 <script>
+  import addToCart from '@/components/mixins/AddToCart'
     export default {
         name: "MenClothing",
+        mixins: [addToCart],
         data() {
             return {
                 categories: null

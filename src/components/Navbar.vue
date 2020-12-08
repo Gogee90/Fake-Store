@@ -11,7 +11,7 @@
       <v-spacer></v-spacer>
 
       <ul class="navbar-links">
-        <li><router-link :to="{name: 'LoginPage'}">Login</router-link></li>
+        <li><router-link :to="{name: 'LoginPage'}" style="text-decoration:none; color: #FFFFFF;">Login</router-link></li>
         <li>Store</li>
         <li>Contacts</li>
       </ul>

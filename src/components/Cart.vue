@@ -5,7 +5,7 @@
       <v-card-text>You have {{this.$store.getters.getCart.length}} items in cart</v-card-text>
       <v-card-subtitle><strong>You are currently logged in as: {{credentials.username}}</strong></v-card-subtitle>
       <v-card-actions>
-        <v-btn text @click="postItems">Confirm</v-btn>
+        <v-btn text @click="postItems ">Confirm</v-btn>
       </v-card-actions>
     </v-card>
 </template>

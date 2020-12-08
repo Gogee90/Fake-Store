@@ -4,7 +4,7 @@
     <v-row v-for="value in carts" :key="value.id">
       <v-card v-for="item in value.product_id" :key="item.id"
           class="mx-auto"
-          max-width="250"
+          max-width="300"
         >
         <v-img
           :src="item.image"

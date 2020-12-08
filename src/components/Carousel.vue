@@ -47,25 +47,20 @@
 <script>
   import { Carousel, Slide } from 'vue-carousel';
   import DialogWindow from "@/components/DialogWindow";
+  import addToCart from '@/components/mixins/AddToCart'
     export default {
         components: {
           DialogWindow,
           Carousel,
           Slide
         },
+        mixins: [addToCart],
         name: "TopCarousel",
         data() {
             return {
-                products: []
+
             }
         },
-        methods: {
-          addToCart(id) {
-              this.products.push(id)
-              console.log(this.products)
-              this.$store.dispatch('saveCart', this.products)
-          }
-        }
     }
 </script>
 
