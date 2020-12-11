@@ -43,3 +43,9 @@ export default {
   }
 };
 </script>
+<style>
+*, ::before, ::after {
+    background-repeat: no-repeat;
+    box-sizing: unset;
+}
+</style>
