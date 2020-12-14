@@ -5,10 +5,11 @@
       <ul style="list-style: none">
         <li style="background-color: lightgray">#{{value.id}}</li>
         <li><small>{{value.date}}</small></li>
-        <li v-for="item in value.product_id" :key="item.id" class="card">
+        <li v-for="item in value.product_id" :key="item.id" class="card pa-1">
           <v-card
               class="mx-auto"
               max-width="300"
+              :to="{name: 'Product', params:{category: item.category, product_id: item.id}}"
             >
             <v-img
               :src="item.image"
@@ -17,14 +18,11 @@
             ></v-img>
             <v-card-title >{{item.title}}</v-card-title>
             <v-card-subtitle class="pb-0">{{ item.price }} USD</v-card-subtitle>
-            <v-card-actions>
-              <v-btn color="orange"
-              text>Remove from cart</v-btn>
-            </v-card-actions>
           </v-card>
+          <v-spacer></v-spacer>
         </li>
       </ul>
-      <v-spacer></v-spacer>
+
     </v-row>
     <v-divider></v-divider>
     <v-spacer></v-spacer>

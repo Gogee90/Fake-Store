@@ -72,4 +72,10 @@
   left: 11em;
   bottom: 2em;
 }
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: none;
+}
 </style>
